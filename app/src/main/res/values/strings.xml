@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PhotoAlbum</string>
+    <string name="community">社区</string>
+    <string name="center">个人中心</string>
+    <string name="photo_album">相册</string>
+    <string name="pic">照片</string>
+    <string name="classify">分类</string>
+</resources>

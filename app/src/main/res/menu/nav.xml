@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/community"
+        android:title="@string/community"
+        android:icon="@mipmap/community"/>
+    <item
+        android:id="@+id/photo_album"
+        android:title="@string/photo_album"
+        android:icon="@mipmap/photo_album"/>
+    <item
+        android:id="@+id/center"
+        android:title="@string/center"
+        android:icon="@mipmap/center"/>
+</menu>
