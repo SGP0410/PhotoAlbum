@@ -1,12 +1,14 @@
 package com.sun.myapplibrary.utils;
 
 import android.annotation.SuppressLint;
+import android.util.DisplayMetrics;
 import android.widget.Toast;
 
 import com.sun.myapplibrary.ZhcsConfig;
 
 import org.json.JSONObject;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Utils {

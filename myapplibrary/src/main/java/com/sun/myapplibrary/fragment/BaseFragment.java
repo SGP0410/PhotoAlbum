@@ -1,10 +1,12 @@
 package com.sun.myapplibrary.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.UiModeManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +17,10 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import com.sun.myapplibrary.ZhcsConfig;
 import com.sun.myapplibrary.activity.BaseActivity;
+
+import java.util.Objects;
 
 
 public abstract class BaseFragment extends Fragment implements View.OnClickListener {
@@ -73,5 +78,32 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         if (bundle != null)
             intent.putExtras(bundle);
         startActivityForResult(intent , requestCode);
+    }
+
+    /**
+     * 获取一行最多显示多少item
+     *
+     * @param itemWidth item的宽度
+     * @return
+     */
+    @SuppressLint("NewApi")
+    public int getSpanCount(int itemWidth) {
+        DisplayMetrics dm = new DisplayMetrics();
+        Objects.requireNonNull(Objects.requireNonNull(getContext()).getDisplay()).getMetrics(dm);
+        //获取屏幕宽度
+        int widthPixels = dm.widthPixels;
+        //获取设备像素密度
+        float density = dm.densityDpi;
+        //1dp*像素密度(dpi)/160(dpi) = 实际像素数(px)
+        int dp = (int) ((widthPixels * 160) / density);
+
+        if (itemWidth == 0) {
+            return 0;
+        }
+        //计算出一行显示多少item
+
+        double spanCount = ((double) dp) / ((double) itemWidth);
+
+        return (int) Math.round(spanCount);
     }
 }
